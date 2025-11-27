@@ -1,38 +1,50 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter import *
 
-import logica
+
 
 def iniciar_interface():
     janela = tk.Tk()
     janela.title("CRUD de Perguntas")
     janela.geometry("850x500")
 
-    perguntas = logica.carregar_dados()
 
     # == Interface ==
-    frame = ttk.LabelFrame(janela, text= "Gerenciar Perguntas")
+    pergunta = StringVar()
+    opcao1 = StringVar()
+    opcao2= StringVar()
+    opcao3= StringVar()
+    correta= IntVar()
+
+    frame = Frame(janela)
     frame.pack(fill="x", padx=10, pady=10)
 
-    ttk.Label(frame, text="Pergunta:").grid(row=0, column=0)
-    entrada_pergunta = ttk.Entry(frame, width=80)
-    entrada_pergunta.grid(row=0, column=1, columnspan=3)
+    Label(janela, text="Cadastro / Edição de perguntas").pack()
 
-    # == Campos de texto ==
-    Label(frame, text="Cadastro / Edição de Perguntas").grid(row=0, column=0, sticky="w")
+    Label(frame, text="Pergunta:").grid(row=0, column=0)
+    Entry(frame, textvariable=pergunta, width=30).grid(row=0, column=1, padx=10,)
 
+    Label(frame, text="Opção 1: ").grid(row=1, column=0)
+    Entry(frame, textvariable=opcao1, width=30).grid(row=1,column=1, padx=10)
 
+    Label(frame, text="Opção 2: ").grid(row=1, column=2)
+    Entry(frame, textvariable=opcao2,width=30).grid(row=1, column=3, padx=10)
+    
+    Label(frame, text="Opção 3: ").grid(row=2, column=0)
+    Entry(frame, textvariable=opcao3, width=30).grid(row=2,column=1, padx=10)
 
+    Label(frame, text="Alternativa Correta: ").grid(row=2, column=2)
+    Entry(frame, textvariable=correta,width=30).grid(row=2,column=3,padx=10)
 
-
-
-
-
-
-
-
-
-
+    treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings")
+    treeview.heading("pergunta",text="pergunta")
+    treeview.heading("opcao1", text="Opção 1")
+    treeview.heading("opcao2", text="Opção 2")
+    treeview.heading("opcao3", text="Opção 3")
+    treeview.heading("correta",text="Resposta")
+    treeview.pack(fill="both",padx=10,pady=10)
 
     janela.mainloop()
+iniciar_interface()
