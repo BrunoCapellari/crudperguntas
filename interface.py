@@ -51,6 +51,9 @@ def iniciar_interface():
     frame = Frame(janela)
     frame.pack(fill="x", padx=10, pady=10)
 
+    frame_botoes = Frame(janela)
+    frame_botoes.pack(fill="x")
+
     Label(janela, text="Cadastro / Edição de perguntas").pack()
 
     Label(frame, text="Pergunta:").grid(row=0, column=0)
@@ -67,6 +70,10 @@ def iniciar_interface():
 
     Label(frame, text="Alternativa Correta: ").grid(row=2, column=2)
     Entry(frame, textvariable=correta,width=30).grid(row=2,column=3,padx=10)
+
+    Button(frame_botoes, text="Adicionar Pergunta", command= logica.adicionar, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
+    Button(frame_botoes, text="Atualizar Pergunta", command= logica.atualizar, bg="#adad28", fg="white").grid(row=0,column=1)
+    Button(frame_botoes, text="Remover Pergunta", command= logica.excluir, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings")
     treeview.heading("pergunta",text="pergunta")
