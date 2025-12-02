@@ -80,6 +80,9 @@ def iniciar_interface():
     janela = tk.Tk()
     janela.title("CRUD de Perguntas")
     janela.geometry("850x500")
+
+    style = ttk.Style()
+    style.theme_use("default")
     
     pergunta = StringVar()
     opcao1 = StringVar()
@@ -114,8 +117,8 @@ def iniciar_interface():
     Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
     Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
 
-    treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings")
-    treeview.heading("pergunta",text="pergunta")
+    treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings", height=6)
+    treeview.heading("pergunta",text="Pergunta")
     treeview.heading("opcao1", text="Opção 1")
     treeview.heading("opcao2", text="Opção 2")
     treeview.heading("opcao3", text="Opção 3")
