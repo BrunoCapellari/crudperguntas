@@ -125,13 +125,13 @@ def iniciar_interface():
     Label(frame, text="Pergunta:",bg="#022a5c",fg="white").grid(row=0, column=0)
     Entry(frame, textvariable=pergunta, width=50).grid(row=0, column=1, padx=10)
 
-    Label(frame, text="Opção 1: ",bg="#022a5c",fg="white").grid(row=1, column=0)
+    Label(frame, text="Opção 0: ",bg="#022a5c",fg="white").grid(row=1, column=0)
     Entry(frame, textvariable=opcao1, width=50).grid(row=1,column=1, padx=10)
 
-    Label(frame, text="Opção 2: ",bg="#022a5c",fg="white").grid(row=1, column=2)
+    Label(frame, text="Opção 1: ",bg="#022a5c",fg="white").grid(row=1, column=2)
     Entry(frame, textvariable=opcao2,width=50).grid(row=1, column=3, padx=10)
     
-    Label(frame, text="Opção 3: ",bg="#022a5c",fg="white").grid(row=2, column=0)
+    Label(frame, text="Opção 2: ",bg="#022a5c",fg="white").grid(row=2, column=0)
     Entry(frame, textvariable=opcao3, width=50).grid(row=2,column=1, padx=10)
 
     Label(frame, text="Alternativa Correta: ",bg="#022a5c",fg="white").grid(row=2, column=2)
@@ -144,9 +144,9 @@ def iniciar_interface():
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings", height=6)
     treeview.heading("pergunta",text="Pergunta")
-    treeview.heading("opcao1", text="Opção 1")
-    treeview.heading("opcao2", text="Opção 2")
-    treeview.heading("opcao3", text="Opção 3")
+    treeview.heading("opcao1", text="Opção 0")
+    treeview.heading("opcao2", text="Opção 1")
+    treeview.heading("opcao3", text="Opção 2")
     treeview.heading("correta",text="Resposta")
     treeview.pack(fill="both",padx=10,pady=10)
 

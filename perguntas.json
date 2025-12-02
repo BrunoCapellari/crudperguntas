@@ -1,0 +1,37 @@
+[
+    {
+        "pergunta": "Qual e a capital do Brasil?",
+        "opcao1": "Acre",
+        "opcao2": "Brasília",
+        "opcao3": "Maceió",
+        "correta": 1
+    },
+    {
+        "pergunta": "Qual o maior planeta do sistema solar?",
+        "opcao1": "Terra",
+        "opcao2": "Saturno",
+        "opcao3": "Júpiter",
+        "correta": 2
+    },
+    {
+        "pergunta": "Qual o idioma mais falado do mundo?",
+        "opcao1": "Português",
+        "opcao2": "Inglês",
+        "opcao3": "Espanhol",
+        "correta": 1
+    },
+    {
+        "pergunta": "Qual o país com maior população?",
+        "opcao1": "China",
+        "opcao2": "Índia",
+        "opcao3": "Estados Unidos",
+        "correta": 1
+    },
+    {
+        "pergunta": "A Microsoft  foi criada por quem?",
+        "opcao1": "Steve Jobs",
+        "opcao2": "Jeff Bezos",
+        "opcao3": "Bill Gates",
+        "correta": 2
+    }
+]

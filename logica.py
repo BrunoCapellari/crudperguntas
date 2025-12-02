@@ -28,21 +28,21 @@ def validar_pergunta(pergunta):
         return False
     return True
 
-def adicionar(perguntas, nova):
+def adicionar(perguntas, nova_pergunta):
     """Adiciona nova pergunta ao JSON."""
-    if not validar_pergunta(nova):
+    if not validar_pergunta(nova_pergunta):
         raise ValueError("Dados incompletos ou incorretos.")
-    perguntas.append(nova)
+    perguntas.append(nova_pergunta)
     salvar_dados(perguntas)
     return perguntas
 
-def atualizar(perguntas, indice, nova):
+def atualizar(perguntas, indice, nova_pergunta):
     """Atualiza pergunta existente."""
     if indice < 0 or indice >= len(perguntas):
         raise IndexError("Índice inválido.")
-    if not validar_pergunta(nova):
+    if not validar_pergunta(nova_pergunta):
         raise ValueError("Campos incompletos.")
-    perguntas[indice] = nova
+    perguntas[indice] = nova_pergunta
     salvar_dados(perguntas)
     return perguntas
 
