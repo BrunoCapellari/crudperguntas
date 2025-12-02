@@ -21,6 +21,45 @@ def adicionar_pergunta():
     except ValueError as e:
         messagebox.showerror("Erro", f"Erro ao adicionar a pergunta {e}")
 
+def atualizar_pergunta():
+    try:
+        item = treeview.selection()
+        if not item:
+            messagebox.showerror("Erro", "Nenhuma pergunta selecionada.")
+            return
+        
+        indice = treeview.index(item[0])
+
+        nova = {
+            "pergunta": pergunta.get(),
+            "opcao1": opcao1.get(),
+            "opcao2": opcao2.get(),
+            "opcao3": opcao3.get(),
+            "correta": int(correta.get())
+        }
+
+        logica.atualizar(perguntas, indice, nova)
+        messagebox.showinfo("Sucesso", "Pergunta atualizada.")
+
+    except Exception as e:
+        messagebox.showerror("Erro", str(e))
+
+def remover_pergunta():
+    try:
+        item = treeview.selection()
+        if not item:
+            messagebox.showerror("Erro", "Nenhuma pergunta selecionada.")
+            return
+        
+        indice = treeview.index(item[0])
+        logica.excluir(perguntas, indice)
+        treeview.delete(item[0])
+
+        messagebox.showinfo("Sucesso", "Pergunta removida.")
+    except Exception as e:
+        messagebox.showerror("Erro", str(e))
+
+
 def mostrar_dados(event=None):
     selecao = treeview.selection()
     if not selecao:
@@ -71,9 +110,9 @@ def iniciar_interface():
     Label(frame, text="Alternativa Correta: ").grid(row=2, column=2)
     Entry(frame, textvariable=correta,width=30).grid(row=2,column=3,padx=10)
 
-    Button(frame_botoes, text="Adicionar Pergunta", command= logica.adicionar, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
-    Button(frame_botoes, text="Atualizar Pergunta", command= logica.atualizar, bg="#adad28", fg="white").grid(row=0,column=1)
-    Button(frame_botoes, text="Remover Pergunta", command= logica.excluir, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
+    Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
+    Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
+    Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings")
     treeview.heading("pergunta",text="pergunta")
