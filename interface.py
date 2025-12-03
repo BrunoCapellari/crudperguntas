@@ -54,6 +54,15 @@ def remover_pergunta():
             return
         
         indice = treeview.index(item[0])
+        
+        confirmar = messagebox.askyesno(
+            "Deletar",
+            "Tem certeza que deseja deletar essa pergunta?"
+        )
+
+        if not confirmar:
+            return  # Usuário cancelou
+        
         logica.excluir(perguntas, indice)
         treeview.delete(item[0])
         atualizar_treeview()
@@ -120,6 +129,9 @@ def iniciar_interface():
     frame_botoes = Frame(janela,bg="#022a5c")
     frame_botoes.pack(fill="x")
 
+    frame_botoes2 = Frame(janela,bg="#022a5c")
+    frame_botoes2.pack(fill="x")
+
     Label(janela, text="Cadastro / Edição de perguntas",bg="#022a5c",fg="white").pack()
 
     Label(frame, text="Pergunta:",bg="#022a5c",fg="white").grid(row=0, column=0)
@@ -137,11 +149,11 @@ def iniciar_interface():
     Label(frame, text="Alternativa Correta: ",bg="#022a5c",fg="white").grid(row=2, column=2)
     Entry(frame, textvariable=correta,width=50).grid(row=2,column=3,padx=10)
 
-    Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
-    Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
-    Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
-    Button(frame_botoes, text="Limpar", command=limpar_campos,bg="#bf5804",fg="white").grid(row=0, column=3,padx=10)
-    Button(frame_botoes, text="Sair", command=janela.quit, bg="#0fab72", fg="white").grid(row=0, column=4)
+    Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white",width=15).grid(row=0,column=0, padx=10)
+    Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white",width=15).grid(row=0,column=1, padx=10)
+    Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white",width=15).grid(row=0,column=2, padx=10)
+    Button(frame_botoes, text="Limpar", command=limpar_campos,bg="#bf5804",fg="white",width=15).grid(row=0, column=3,padx=10)
+    Button(frame_botoes, text="Sair", command=janela.quit, bg="#0fab72", fg="white", width=15).grid(row=0, column=4, padx=10)
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings", height=6)
     treeview.heading("pergunta",text="Pergunta")
@@ -149,7 +161,7 @@ def iniciar_interface():
     treeview.heading("opcao2", text="Opção 1")
     treeview.heading("opcao3", text="Opção 2")
     treeview.heading("correta",text="Resposta")
-    treeview.pack(fill="both",padx=10,pady=10)
+    treeview.pack(fill="both",padx=10,pady=10,expand=True)
 
     treeview.bind("<<TreeviewSelect>>", mostrar_dados)
     for p in perguntas:
