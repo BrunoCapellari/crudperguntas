@@ -16,6 +16,10 @@ def adicionar_pergunta():
             "opcao3": opcao3.get(),
             "correta": correta.get()
         }
+        for p in perguntas:
+          if nova_pergunta["pergunta"] == p["pergunta"]:
+              messagebox.showerror("Erro", f"Esta pergunta ja existe")
+              return
         logica.adicionar(perguntas, nova_pergunta)
         atualizar_treeview()
         messagebox.showinfo("Sucesso.","Pergunta adicionada com sucesso.")
