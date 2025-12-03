@@ -140,7 +140,8 @@ def iniciar_interface():
     Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
     Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
     Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
-    Button(frame_botoes, text="Limpar", command=limpar_campos,bg="#bf5804",fg="white").grid(row=0, column=3)
+    Button(frame_botoes, text="Limpar", command=limpar_campos,bg="#bf5804",fg="white").grid(row=0, column=3,padx=10)
+    Button(frame_botoes, text="Sair", command=janela.quit, bg="#0fab72", fg="white").grid(row=0, column=4)
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings", height=6)
     treeview.heading("pergunta",text="Pergunta")
@@ -155,4 +156,3 @@ def iniciar_interface():
         treeview.insert("", "end", values=(p["pergunta"], p["opcao1"], p["opcao2"], p["opcao3"], p["correta"]))
 
     janela.mainloop()
-iniciar_interface()
