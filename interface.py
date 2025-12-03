@@ -4,7 +4,7 @@ from tkinter import messagebox
 from tkinter import *
 
 import logica
-
+4
 perguntas = logica.carregar_dados()
 
 def adicionar_pergunta():
