@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
-
+# Modificou o botão sair AUTOR: Bruno
 import logica
 
 perguntas = logica.carregar_dados()
